@@ -111,7 +111,7 @@ abstract class AbstractClassDocumentHydrator implements DocumentHydratorInterfac
         //Fill relationships
         foreach ($resource->relationships() as $name => $relationship) {
             foreach ($relationship->resourceLinks() as $link) {
-                $object = $this->getObjectFromMap($link["type"], $link["id"], $resourceMap);
+                $object = $this->getObjectFromMap((string) $link["type"], (string) $link["id"], $resourceMap);
 
                 if ($object === null && $document->hasIncludedResource($link["type"], $link["id"])) {
                     $relatedResource = $document->resource($link["type"], $link["id"]);
